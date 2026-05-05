@@ -92,12 +92,13 @@ export default function Navbar() {
       />
       {/* Logo + clock */}
       <div className="flex items-center gap-4">
-        <motion.span
-          whileHover={{ scale: 1.08 }}
-          className="text-indigo-400 font-bold text-xl font-mono cursor-pointer tracking-wider"
+        <motion.a
+          href="#hero"
+          whileHover={{ scale: 1.05 }}
+          className="text-indigo-400 font-bold text-lg font-mono cursor-pointer tracking-wider"
         >
-          &lt;{siteConfig.owner.name.split(" ")[1]} /&gt;
-        </motion.span>
+          &lt;Pracheta /&gt;
+        </motion.a>
         <LiveClock />
       </div>
 
