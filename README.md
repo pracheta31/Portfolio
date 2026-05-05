@@ -1,289 +1,142 @@
-# 🎨 Pracheta's Portfolio - AI-Powered
+# 🚀 Patel Pracheta - Portfolio Website
 
-A modern, responsive portfolio website with an AI chat assistant built using React, Vite, Tailwind CSS, Framer Motion, and Google's Gemini AI.
+A modern, responsive portfolio website built with React, featuring an AI-powered chat assistant and real-time visitor tracking.
 
-![Portfolio Preview](https://img.shields.io/badge/React-19.2.4-blue) ![Vite](https://img.shields.io/badge/Vite-8.0.4-purple) ![Tailwind](https://img.shields.io/badge/Tailwind-4.2.2-cyan) ![AI](https://img.shields.io/badge/AI-Gemini-orange)
+## 🌐 Live Demo
 
----
+**[View Live Portfolio](https://your-portfolio-url.vercel.app)** *(Update after deployment)*
 
 ## ✨ Features
 
-- 🎯 **AI Chat Assistant** - Powered by Google Gemini 1.5 Pro
-- 🎨 **Beautiful Animations** - Smooth transitions with Framer Motion
-- 📱 **Fully Responsive** - Works perfectly on all devices
-- 🌙 **Dark Theme** - Modern indigo/purple color scheme
-- 📧 **Contact Form** - Integrated with EmailJS
-- 📄 **Downloadable Resume** - One-click download
-- 🚀 **Fast Performance** - Built with Vite for lightning-fast dev and build
-- ♿ **Accessible** - WCAG compliant design
-
----
-
-## 🚀 Quick Start
-
-### 1. Install Dependencies
-```bash
-npm install
-```
-
-### 2. Get Gemini API Key
-1. Visit: https://aistudio.google.com/app/apikey
-2. Sign in and create an API key
-3. Copy the key
-
-### 3. Configure Environment
-Create/edit `.env` file:
-```env
-VITE_BACKEND_URL=http://localhost:5000
-VITE_GEMINI_API_KEY=your_api_key_here
-```
-
-### 4. Run Development Server
-```bash
-npm run dev
-```
-
-### 5. Test AI Chat
-- Open http://localhost:5173
-- Click chat button (bottom right)
-- Ask: "What projects has she built?"
-
-**📖 For detailed setup instructions, see [QUICK_START.md](./QUICK_START.md)**
-
----
-
-## 📁 Project Structure
-
-```
-my-portfolio/
-├── src/
-│   ├── components/
-│   │   ├── AiChat.jsx       # AI chat assistant
-│   │   ├── Navbar.jsx       # Navigation
-│   │   ├── Hero.jsx         # Hero section with split-flap animation
-│   │   ├── About.jsx        # About section
-│   │   ├── Skills.jsx       # Skills showcase
-│   │   ├── Education.jsx    # Education timeline
-│   │   ├── Projects.jsx     # Project cards
-│   │   ├── Contact.jsx      # Contact form
-│   │   └── Footer.jsx       # Footer
-│   ├── data/
-│   │   └── config.js        # Site configuration
-│   ├── App.jsx              # Main app
-│   ├── main.jsx             # Entry point
-│   └── index.css            # Global styles
-├── public/                  # Static assets
-├── .env                     # Environment variables (not in Git)
-├── .env.example             # Example env file
-└── package.json             # Dependencies
-```
-
----
+- **🎨 Modern UI/UX** - Clean, professional design with smooth animations
+- **🤖 AI Chat Assistant** - Integrated Groq AI for interactive conversations about my work
+- **📊 Visitor Tracking** - Real-time visitor counter with MongoDB
+- **📱 Fully Responsive** - Optimized for mobile, tablet, and desktop
+- **📧 Contact Form** - EmailJS integration for direct communication
+- **📄 Downloadable Resume** - One-click resume download
+- **⚡ Fast Performance** - Built with Vite for lightning-fast load times
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **React 19.2.4** - UI library
-- **Vite 8.0.4** - Build tool
-- **Tailwind CSS 4.2.2** - Styling
-- **Framer Motion 12.38.0** - Animations
-
-### AI & APIs
-- **Google Generative AI 0.24.1** - Gemini AI integration
-- **EmailJS** - Contact form handling
-
-### UI Components
+- **React 19** - UI library
+- **Vite** - Build tool
+- **Tailwind CSS** - Styling
+- **Framer Motion** - Animations
 - **Lucide React** - Icons
-- **React Hot Toast** - Notifications
-- **Typed.js** - Typing animations
 
----
+### Backend & APIs
+- **Groq AI** - AI chat assistant (Llama 3.3 70B)
+- **MongoDB Atlas** - Visitor tracking database
+- **EmailJS** - Contact form functionality
+- **Vercel Serverless Functions** - API endpoints
 
-## 🎨 Customization
+## 📂 Project Structure
 
-### Update Portfolio Content
-Edit `src/data/config.js`:
-```javascript
-export const siteConfig = {
-  owner: {
-    name: "Your Name",
-    bio: "Your bio...",
-    email: "your@email.com",
-    resumeUrl: "/resume.pdf",
-  },
-  // ... more configuration
-};
+```
+my-portfolio/
+├── api/                    # Vercel serverless functions
+│   ├── _db.js             # MongoDB connection
+│   ├── visit.js           # Increment visitor count
+│   └── visits.js          # Get visitor count
+├── public/                # Static assets
+│   ├── favicon.svg        # Site favicon
+│   └── resume.pdf         # Downloadable resume
+├── src/
+│   ├── components/        # React components
+│   │   ├── About.jsx
+│   │   ├── AiChat.jsx     # AI chat assistant
+│   │   ├── Contact.jsx
+│   │   ├── Education.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Hero.jsx
+│   │   ├── Navbar.jsx
+│   │   ├── Projects.jsx
+│   │   └── Skills.jsx
+│   ├── data/
+│   │   └── config.js      # Site configuration
+│   ├── App.jsx
+│   └── main.jsx
+├── .env                   # Environment variables
+├── vercel.json           # Vercel configuration
+└── package.json
 ```
 
-### Update AI Context
-Edit `SYSTEM_CONTEXT` in `src/components/AiChat.jsx` to change what the AI knows about you.
+## 🚀 Getting Started
 
-### Styling
-- Tailwind classes in components
-- Global styles in `src/index.css`
-- Theme colors in Tailwind config
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn
 
----
+### Installation
 
-## 📜 Available Scripts
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/pracheta31/Portfolio.git
+   cd Portfolio
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   
+   Create a `.env` file in the root directory:
+   ```env
+   VITE_GROQ_API_KEY=your_groq_api_key
+   MONGO_URI=your_mongodb_connection_string
+   ```
+
+4. **Run development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open in browser**
+   ```
+   http://localhost:5173
+   ```
+
+## 📦 Build for Production
 
 ```bash
-npm run dev      # Start development server
-npm run build    # Build for production
-npm run preview  # Preview production build
-npm run lint     # Run ESLint
+npm run build
 ```
 
----
+The build output will be in the `dist/` directory.
 
-## 🚢 Deployment
+## 🌍 Deployment
 
-### Vercel (Recommended)
-1. Push to GitHub
-2. Import in Vercel
-3. Add `VITE_GEMINI_API_KEY` environment variable
+This project is configured for deployment on **Vercel**.
+
+### Deploy to Vercel
+
+1. Push your code to GitHub
+2. Import project on [Vercel](https://vercel.com)
+3. Add environment variables:
+   - `MONGO_URI`
+   - `VITE_GROQ_API_KEY`
 4. Deploy!
 
-### Netlify
-1. Push to GitHub
-2. Import in Netlify
-3. Build: `npm run build`
-4. Publish: `dist`
-5. Add `VITE_GEMINI_API_KEY` environment variable
-6. Deploy!
+## 📧 Contact
 
-**📖 For detailed deployment guide, see [SETUP_GUIDE.md](./SETUP_GUIDE.md)**
-
----
-
-## 🐛 Troubleshooting
-
-### AI Chat Not Working?
-
-**"API key not configured"**
-- Check `.env` file exists
-- Verify variable name: `VITE_GEMINI_API_KEY`
-- Restart dev server
-
-**"Invalid API key"**
-- Copy entire key from Google AI Studio
-- No extra spaces
-- Generate new key if needed
-
-**"Model not found"**
-- API key might not have access
-- Try generating new key
-- Check you're using personal Google account
-
-**📖 For more troubleshooting, see [QUICK_START.md](./QUICK_START.md)**
-
----
-
-## 📚 Documentation
-
-- **[QUICK_START.md](./QUICK_START.md)** - Get running in 5 minutes
-- **[SETUP_GUIDE.md](./SETUP_GUIDE.md)** - Comprehensive setup guide
-- **[AI_CHAT_SETUP.md](./AI_CHAT_SETUP.md)** - AI chat configuration
-- **[FIXES_APPLIED.md](./FIXES_APPLIED.md)** - Recent fixes and changes
-
----
-
-## 🔒 Security
-
-- ✅ API keys in environment variables
-- ✅ `.env` file in `.gitignore`
-- ✅ No sensitive data in code
-- ✅ Rate limiting on API calls
-- ✅ Input validation
-
----
-
-## 📊 Performance
-
-- ⚡ Vite for fast builds
-- ⚡ Code splitting
-- ⚡ Lazy loading
-- ⚡ Optimized animations
-- ⚡ Minimal bundle size
-
----
-
-## 🎯 Features Breakdown
-
-### AI Chat Assistant
-- Powered by Gemini 1.5 Pro
-- Context-aware responses
-- Quick question chips
-- Loading states
-- Error handling
-- Mobile-friendly
-
-### Hero Section
-- Split-flap departure board animation
-- Animated name reveal
-- Role cycling
-- Mouse spotlight effect
-- Smooth scroll indicator
-
-### Projects Section
-- Featured projects
-- GitHub links
-- Tech stack tags
-- Hover effects
-- Responsive cards
-
-### Contact Form
-- EmailJS integration
-- Form validation
-- Success/error toasts
-- Accessible inputs
-
----
-
-## 🤝 Contributing
-
-This is a personal portfolio project, but feel free to:
-- Report bugs
-- Suggest features
-- Fork and customize for your own use
-
----
+- **Email**: pracheta302@gmail.com
+- **LinkedIn**: [pracheta-patel](https://www.linkedin.com/in/pracheta-patel-1b7101376)
+- **GitHub**: [pracheta31](https://github.com/pracheta31)
 
 ## 📝 License
 
-This project is open source and available for personal use.
-
----
-
-## 👤 Author
-
-**Patel Pracheta**
-- Email: pracheta302@gmail.com
-- GitHub: [@pracheta31](https://github.com/pracheta31)
-- LinkedIn: [Pracheta Patel](https://www.linkedin.com/in/pracheta-patel-1b7101376)
-
----
+This project is open source and available under the [MIT License](LICENSE).
 
 ## 🙏 Acknowledgments
 
-- Google Gemini AI for the chat assistant
-- Framer Motion for smooth animations
-- Tailwind CSS for styling
-- Lucide for beautiful icons
-- EmailJS for contact form handling
+- Built as part of MBIT Training & Placement Cell initiative
+- AI powered by Groq (Llama 3.3 70B)
+- Icons by Lucide
+- Animations by Framer Motion
 
 ---
 
-## 📞 Support
-
-Need help? Check these resources:
-1. [QUICK_START.md](./QUICK_START.md) - Quick setup guide
-2. [SETUP_GUIDE.md](./SETUP_GUIDE.md) - Detailed documentation
-3. Browser console (F12) for error messages
-4. [Google AI Studio](https://aistudio.google.com) for API key issues
-
----
-
-**Made with ❤️ and AI**
-
-⭐ Star this repo if you found it helpful!
+**Made with ❤️ by Patel Pracheta**
