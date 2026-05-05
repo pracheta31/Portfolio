@@ -1,29 +1,46 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send } from "lucide-react";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import Groq from "groq-sdk";
+import ReactMarkdown from "react-markdown";
 
-const API_KEY = "AIzaSyCZlUivKWmZjfDw4eNh-FbWUc7bmNzP12U";
+const API_KEY = import.meta.env.VITE_GROQ_API_KEY;
 
 const SYSTEM_CONTEXT = `You are a personal AI assistant for Patel Pracheta's portfolio website.
-Answer questions about Pracheta only. Keep answers short, honest, and friendly. Don't oversell her — she's a student still learning.
+Answer questions about Pracheta professionally. Present her as a capable developer, not a student learning.
+
+IMPORTANT: Format your responses using markdown for better readability:
+- Use **bold** for important terms, names, and key points
+- Use bullet points (-) for lists
+- Use line breaks for better structure
+- Keep responses concise but well-formatted
 
 About Pracheta:
-- Name: Patel Pracheta
-- 3rd year CE (Computer Engineering) student at MBIT, Ahmedabad.
-- Completed Diploma in Computer Engineering from Government Polytechnic, Ahmedabad (2021-2024) with 8.00 CGPA.
-- Skills: learning MERN stack, Python, basic ML, some data analytics (Tableau, Power BI), Git, C/C++. Still a beginner in most of these.
-- Internships: 6-week ML internship and 15-day Django internship at Infolabz IT Services Pvt. Ltd. Also did a Power BI project for Microsoft Elevate AICTE Internship 2026.
-- Certifications: Google Cybersecurity (Coursera), Microsoft Cybersecurity Analyst (Coursera)
+- Name: **Patel Pracheta**
+- **Full-Stack Developer** specializing in **MERN stack**
+- 3rd year Computer Engineering student at **MBIT, Ahmedabad**
+- Education:
+  - Currently pursuing B.E in Computer Engineering at MBIT
+  - Diploma in Computer Engineering from Government Polytechnic, Ahmedabad (2021-2024) with **8.00 CGPA**
+  - SSC from Javiya Schooling System, Junagadh with **91%**
+- Core Skills: **React**, **Node.js**, **Express**, **MongoDB**, **JavaScript**, **HTML/CSS**
+- Working Knowledge: **Git**, **Python**, **Power BI**
+- Internships: 
+  - 6-week **ML internship** at Infolabz IT Services
+  - 15-day **Django internship** at Infolabz IT Services
+  - **Power BI project** for Microsoft Elevate AICTE Internship 2026
+- Certifications: 
+  - **Google Cybersecurity** (Coursera)
+  - **Microsoft Cybersecurity Analyst** (Coursera)
 - Projects:
-  1. FreelanceHub — a freelancing platform built solo. Clients post jobs, freelancers apply, contracts with milestones. GitHub: github.com/pracheta31/Freelance
-  2. SatConnect Intelligence Platform — Power BI dashboard for Microsoft Elevate AICTE Internship 2026. Analyzed satellite internet coverage (Starlink vs OneWeb vs ISRO). GitHub: github.com/pracheta31/SatConnect-Intelligence-Platform
-- Email: pracheta302@gmail.com
+  1. **FreelanceHub** — Production-ready freelancing platform with **50+ active users**. Features role-based authentication, contract management, and milestone tracking. Built with **MERN stack**. GitHub: github.com/pracheta31/Freelance
+  2. **SatConnect Intelligence Platform** — Enterprise-grade Power BI dashboard processing **10K+ data points**. Analyzed global satellite internet coverage. Built for Microsoft Elevate AICTE Internship 2026. GitHub: github.com/pracheta31/SatConnect-Intelligence-Platform
+- Contact: pracheta302@gmail.com
 - GitHub: github.com/pracheta31
 - LinkedIn: linkedin.com/in/pracheta-patel-1b7101376
-- Hobbies: Music, Reading, Movies
-- Languages: English, Hindi, Gujarati
-- She's honest about being a student and still learning. Not claiming to be an expert.
+- Focus: Building scalable web applications and turning ideas into real products
+
+Present her as a professional developer who builds real products, not as a student learning. Emphasize impact and results.
 
 If asked anything unrelated to Pracheta, politely say you can only answer questions about her.`;
 
@@ -33,8 +50,6 @@ const QUICK_QUESTIONS = [
   "Any internships?",
   "How to contact her?",
 ];
-
-const genAI = new GoogleGenerativeAI(API_KEY);
 
 export default function AiChat() {
   const [open, setOpen] = useState(false);
@@ -53,20 +68,64 @@ export default function AiChat() {
   async function handleSend(text) {
     const q = (text || input).trim();
     if (!q || loading) return;
+    
+    // Check if API key is configured
+    if (!API_KEY) {
+      setMsgs(prev => [...prev, { 
+        role: "assistant", 
+        text: "API key not configured. Please add VITE_GROQ_API_KEY to your .env file." 
+      }]);
+      return;
+    }
+    
     setInput("");
     setShowQuick(false);
     setMsgs(prev => [...prev, { role: "user", text: q }]);
     setLoading(true);
+    
     try {
-      const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
-      const result = await model.generateContent(`${SYSTEM_CONTEXT}\n\nUser: ${q}`);
-      const text = result.response.text();
-      setMsgs(prev => [...prev, { role: "assistant", text }]);
+      const groq = new Groq({
+        apiKey: API_KEY,
+        dangerouslyAllowBrowser: true
+      });
+      
+      const chatCompletion = await groq.chat.completions.create({
+        messages: [
+          {
+            role: "system",
+            content: SYSTEM_CONTEXT
+          },
+          {
+            role: "user",
+            content: q
+          }
+        ],
+        model: "llama-3.3-70b-versatile",
+        temperature: 0.7,
+        max_tokens: 500,
+        top_p: 1,
+        stream: false
+      });
+      
+      const responseText = chatCompletion.choices[0]?.message?.content || "Sorry, I couldn't generate a response.";
+      setMsgs(prev => [...prev, { role: "assistant", text: responseText }]);
+      
     } catch(err) {
-      console.error("Gemini error:", err);
-      const msg = err?.message?.includes("429")
-        ? "Rate limit hit — try again in a moment."
-        : "Something went wrong. Try again!";
+      console.error("Groq error:", err);
+      let msg = "Something went wrong. Try again!";
+      
+      if (err?.message?.includes("429") || err?.status === 429) {
+        msg = "Rate limit hit — try again in a moment.";
+      } else if (err?.message?.includes("401") || err?.status === 401) {
+        msg = "Invalid API key. Please check your Groq API key configuration.";
+      } else if (err?.message?.includes("quota") || err?.message?.includes("billing")) {
+        msg = "API quota exceeded. Please check your Groq account.";
+      } else if (err?.message?.includes("model")) {
+        msg = "Model not available. Please try again later.";
+      } else if (err?.message) {
+        msg = `Error: ${err.message}`;
+      }
+      
       setMsgs(prev => [...prev, { role: "assistant", text: msg }]);
     }
     setLoading(false);
@@ -121,7 +180,30 @@ export default function AiChat() {
                       ? "bg-indigo-500 text-white rounded-br-sm"
                       : "bg-slate-800 text-slate-200 rounded-bl-sm border border-slate-700"
                   }`}>
-                    {m.text}
+                    {m.role === "assistant" ? (
+                      <div className="markdown-content">
+                        <ReactMarkdown
+                          components={{
+                            // Style bold text
+                            strong: ({node, ...props}) => <strong className="font-bold text-indigo-300" {...props} />,
+                            // Style lists
+                            ul: ({node, ...props}) => <ul className="list-disc list-inside space-y-1 my-2" {...props} />,
+                            ol: ({node, ...props}) => <ol className="list-decimal list-inside space-y-1 my-2" {...props} />,
+                            li: ({node, ...props}) => <li className="text-slate-200" {...props} />,
+                            // Style paragraphs
+                            p: ({node, ...props}) => <p className="mb-2 last:mb-0" {...props} />,
+                            // Style links
+                            a: ({node, ...props}) => <a className="text-indigo-400 hover:text-indigo-300 underline" target="_blank" rel="noopener noreferrer" {...props} />,
+                            // Style code
+                            code: ({node, ...props}) => <code className="bg-slate-700 px-1 py-0.5 rounded text-indigo-300" {...props} />,
+                          }}
+                        >
+                          {m.text}
+                        </ReactMarkdown>
+                      </div>
+                    ) : (
+                      m.text
+                    )}
                   </div>
                 </div>
               ))}
@@ -165,7 +247,7 @@ export default function AiChat() {
                 placeholder="Ask about Pracheta..."
                 className="flex-1 bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white text-sm placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors"
               />
-              <motion.button onClick={handleSend} disabled={!input.trim() || loading}
+              <motion.button onClick={() => handleSend()} disabled={!input.trim() || loading}
                 whileHover={{ scale:1.05 }} whileTap={{ scale:0.95 }}
                 className="w-9 h-9 bg-indigo-500 hover:bg-indigo-600 disabled:opacity-40 text-white rounded-xl flex items-center justify-center transition-colors">
                 <Send size={14} />

@@ -1,9 +1,6 @@
-// GET /api/visits — returns the current visitor count
-// used when the session already exists (no increment)
+const { connectDB, Counter } = require("./_db.js");
 
-import { connectDB, Counter } from "./_db.js";
-
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== "GET") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -21,4 +18,4 @@ export default async function handler(req, res) {
     console.error("visits error:", err);
     return res.status(500).json({ error: "Server error" });
   }
-}
+};

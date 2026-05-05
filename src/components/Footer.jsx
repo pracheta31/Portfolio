@@ -13,6 +13,11 @@ export default function Footer() {
   const [visitCount, setVisitCount] = useState(null);
 
   useEffect(() => {
+    // Skip backend calls if BACKEND_URL is not configured or is localhost:5000
+    if (!BACKEND_URL || BACKEND_URL.includes('localhost:5000')) {
+      return;
+    }
+
     // ping the backend to increment + get count
     // using a sessionStorage flag so we only count once per browser session
     const alreadyCounted = sessionStorage.getItem("visited");
@@ -25,17 +30,17 @@ export default function Footer() {
           sessionStorage.setItem("visited", "true");
         })
         .catch(() => {
-          // if backend is down, just fetch the current count silently
-          fetch(`${BACKEND_URL}/api/visits`)
-            .then(r => r.json())
-            .then(data => setVisitCount(data.count))
-            .catch(() => setVisitCount(null));
+          // Silently fail - backend not available
+          setVisitCount(null);
         });
     } else {
       fetch(`${BACKEND_URL}/api/visits`)
         .then(r => r.json())
         .then(data => setVisitCount(data.count))
-        .catch(() => setVisitCount(null));
+        .catch(() => {
+          // Silently fail - backend not available
+          setVisitCount(null);
+        });
     }
   }, []);
 

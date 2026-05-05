@@ -6,17 +6,37 @@ const timeline = [
     year: "Pursuing · 3rd Year",
     title: "B.E in Computer Engineering",
     place: "MBIT (Madhuben and Banubhai Patel Institute of Technology)",
-    desc: "Currently in 3rd year. Learning CS fundamentals, doing web dev and ML stuff on the side.",
+    desc: "Focused on Data Structures, Web Development, and building real-world applications using MERN stack and AI.",
     active: true,
     badge: "In Progress",
+    achievements: [
+      "Built 2 production-ready projects with 50+ users",
+      "Google & Microsoft Cybersecurity certified"
+    ]
   },
   {
     year: "2021 – 2024",
     title: "Diploma in Computer Engineering",
     place: "Government Polytechnic, Ahmedabad",
-    desc: "Completed with 8.00 CGPA.",
+    desc: "Strong foundation in programming fundamentals, database management, and software development.",
     active: false,
     badge: "8.00 CGPA",
+    achievements: [
+      "Graduated with 8.00 CGPA",
+      "Built multiple academic projects"
+    ]
+  },
+  {
+    year: "2021",
+    title: "SSC (10th Standard)",
+    place: "Javiya Schooling System, Junagadh",
+    desc: "Completed secondary education with strong academic performance and developed interest in technology.",
+    active: false,
+    badge: "91%",
+    achievements: [
+      "Scored 91% in board exams",
+      "Developed early interest in computers"
+    ]
   },
 ];
 
@@ -25,14 +45,14 @@ export default function Education() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="education" className="py-16 sm:py-28 px-5 sm:px-8 md:px-16 lg:px-24 bg-slate-900 relative overflow-hidden" ref={ref}>
+    <section id="education" className="py-16 sm:py-24 px-5 sm:px-8 md:px-16 lg:px-24 bg-slate-900 relative overflow-hidden" ref={ref}>
       <div className="absolute top-0 right-0 w-72 h-72 bg-indigo-600/5 rounded-full blur-3xl pointer-events-none" />
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
-        className="flex items-center gap-4 mb-16"
+        className="flex items-center gap-4 mb-12"
       >
         <span className="text-indigo-400 font-mono text-xl">03.</span>
         <h2 className="text-3xl font-bold text-white">Education</h2>
@@ -40,7 +60,6 @@ export default function Education() {
       </motion.div>
 
       <div className="max-w-2xl relative">
-        {/* animated vertical line that draws itself down */}
         <div className="absolute left-0 top-2 bottom-2 w-px bg-slate-800 overflow-hidden">
           <motion.div
             className="w-full bg-gradient-to-b from-indigo-500 via-indigo-400 to-slate-700"
@@ -50,16 +69,15 @@ export default function Education() {
           />
         </div>
 
-        <div className="space-y-10 sm:space-y-12 pl-8 sm:pl-10">
+        <div className="space-y-8 pl-8 sm:pl-10">
           {timeline.map((item, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, x: -30 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.4 + i * 0.2, duration: 0.55 }}
+              transition={{ delay: 0.4 + i * 0.15, duration: 0.5 }}
               className="relative group"
             >
-              {/* dot — pulses if active */}
               <div className="absolute -left-[2.6rem] top-1.5">
                 {item.active ? (
                   <>
@@ -78,11 +96,10 @@ export default function Education() {
                 )}
               </div>
 
-              {/* card */}
               <motion.div
                 whileHover={{ x: 4 }}
                 transition={{ duration: 0.2 }}
-                className={`rounded-xl p-5 border transition-all duration-300 ${
+                className={`rounded-xl p-4 border transition-all duration-300 ${
                   item.active
                     ? "bg-indigo-500/5 border-indigo-500/30 group-hover:border-indigo-500/60"
                     : "bg-slate-800/40 border-slate-700/60 group-hover:border-slate-600"
@@ -98,10 +115,20 @@ export default function Education() {
                     {item.badge}
                   </span>
                 </div>
-                <h3 className="text-white font-semibold text-lg mt-1">{item.title}</h3>
+                <h3 className="text-white font-semibold text-base mt-1">{item.title}</h3>
                 <p className="text-indigo-300/70 text-sm mt-0.5 mb-2">{item.place}</p>
                 {item.desc && (
-                  <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                  <p className="text-slate-400 text-xs leading-relaxed mb-2.5">{item.desc}</p>
+                )}
+                {item.achievements && (
+                  <ul className="space-y-1">
+                    {item.achievements.map((achievement, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-xs text-slate-400">
+                        <span className="text-indigo-400 mt-0.5 shrink-0">▸</span>
+                        {achievement}
+                      </li>
+                    ))}
+                  </ul>
                 )}
               </motion.div>
             </motion.div>

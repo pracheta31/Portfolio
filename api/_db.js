@@ -21,11 +21,10 @@ async function connectDB() {
 }
 
 const counterSchema = new mongoose.Schema({
-  name:  { type: String, default: "portfolio" },
+  name: { type: String, default: "portfolio" },
   count: { type: Number, default: 0 },
 });
 
-const Counter =
-  mongoose.models.Counter || mongoose.model("Counter", counterSchema);
+const Counter = mongoose.models.Counter || mongoose.model("Counter", counterSchema);
 
 module.exports = { connectDB, Counter };

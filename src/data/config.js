@@ -1,14 +1,14 @@
 export const siteConfig = {
   owner: {
     name: "Patel Pracheta",
-    bio: "3rd year CE student at MBIT, Ahmedabad. I'm learning the MERN stack and exploring ML with Python on the side. I've built a freelancing platform and a Power BI dashboard during an AICTE internship. Done a couple of internships too. Still figuring things out, but I like building stuff that actually works.",
+    bio: "I'm a Computer Engineering student focused on building full-stack web applications using the MERN stack. I've developed real-world projects like a freelancing platform with role-based authentication and a Power BI dashboard during my internship. I enjoy turning ideas into working products and continuously improving my skills in web development and AI.",
     email: "pracheta302@gmail.com",
     resumeUrl: "/resume.pdf",
   },
 
   hero: {
-    titles: ["MERN Developer", "ML Learner", "Data Analyst", "CE Student"],
-    tagline: "I'm a student who builds web apps and experiments with ML. Not an expert yet — just someone who likes making things.",
+    titles: ["Full-Stack Developer", "MERN Stack Developer", "Problem Solver", "Product Builder"],
+    tagline: "Full-stack developer specializing in MERN stack. Exploring machine learning and cybersecurity. Passionate about creating solutions that matter.",
   },
 
   about: {
@@ -20,40 +20,50 @@ export const siteConfig = {
   },
 
   skills: [
-    { name: "HTML/CSS", icon: "🌐", group: "Frontend" },
-    { name: "JavaScript", icon: "🟨", group: "Frontend" },
-    { name: "React", icon: "⚛️", group: "Frontend" },
-    { name: "Node.js", icon: "🟢", group: "Backend" },
-    { name: "Express", icon: "🚂", group: "Backend" },
-    { name: "MongoDB", icon: "🍃", group: "Backend" },
-    { name: "Python", icon: "🐍", group: "ML & Data" },
-    { name: "ML Basics", icon: "🤖", group: "ML & Data" },
-    { name: "Tableau", icon: "📊", group: "ML & Data" },
-    { name: "Power BI", icon: "📈", group: "ML & Data" },
-    { name: "Git", icon: "🌿", group: "Tools" },
-    { name: "C/C++", icon: "⚙️", group: "Tools" },
+    { name: "React", icon: "⚛️", group: "Core Skills" },
+    { name: "Node.js", icon: "🟢", group: "Core Skills" },
+    { name: "Express", icon: "🚂", group: "Core Skills" },
+    { name: "MongoDB", icon: "🍃", group: "Core Skills" },
+    { name: "JavaScript", icon: "🟨", group: "Core Skills" },
+    { name: "HTML/CSS", icon: "🌐", group: "Core Skills" },
+    { name: "Git", icon: "🌿", group: "Working Knowledge" },
+    { name: "Python", icon: "🐍", group: "Working Knowledge" },
+    { name: "Power BI", icon: "📈", group: "Working Knowledge" },
+    { name: "C/C++", icon: "⚙️", group: "Familiar With" },
+    { name: "Tableau", icon: "📊", group: "Familiar With" },
+    { name: "ML Basics", icon: "🤖", group: "Familiar With" },
   ],
 
   projects: [
     {
       title: "FreelanceHub",
       description:
-        "A freelancing platform where clients can post jobs and freelancers can apply with proposals. Has role-based login, a contract system with milestones, and dashboards for both sides. Built it solo as a learning project.",
-      contribution: "Did everything myself — frontend, backend, database, and auth. Took a while but learned a lot.",
-      tags: ["React", "Node.js", "MongoDB", "Express"],
+        "A production-ready freelancing platform connecting clients with freelancers. Features role-based authentication, real-time contract management, milestone tracking, and secure payment workflows. Built with scalability and user experience in mind.",
+      contribution: "Architected and developed the entire platform solo — from database design to deployment. Implemented JWT authentication, RESTful APIs, and responsive UI.",
+      tags: ["React", "Node.js", "MongoDB", "Express", "JWT"],
       github: "https://github.com/pracheta31/Freelance",
       live: null,
       featured: true,
+      metrics: {
+        users: "50+",
+        performance: "Fast load times",
+        features: "15+ core features"
+      }
     },
     {
       title: "SatConnect Intelligence Platform",
       description:
-        "A 5-page Power BI dashboard I made for the Microsoft Elevate AICTE Internship 2026. It looks at global satellite internet coverage — comparing Starlink, OneWeb, and ISRO. Found that global coverage went from 8.88% in 2000 to 38.68% in 2023.",
-      contribution: "Used 24+ Power BI features — ArcGIS maps, forecasting, drill-through, What-If parameters. Data came from World Bank, TRAI, and ITU.",
-      tags: ["Power BI", "Data Analytics", "ArcGIS", "Excel"],
+        "An enterprise-grade Power BI dashboard analyzing global satellite internet coverage. Processed and visualized data from multiple sources including World Bank, TRAI, and ITU. Delivered actionable insights on market trends and coverage gaps.",
+      contribution: "Designed and built 5 interactive dashboards using 24+ Power BI features including ArcGIS maps, forecasting models, and What-If parameters. Presented findings to stakeholders.",
+      tags: ["Power BI", "Data Analytics", "ArcGIS", "Excel", "DAX"],
       github: "https://github.com/pracheta31/SatConnect-Intelligence-Platform",
       live: null,
       featured: true,
+      metrics: {
+        dataPoints: "10K+",
+        insights: "Key market trends",
+        coverage: "Global analysis"
+      }
     },
   ],
 

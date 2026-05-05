@@ -15,11 +15,13 @@
     "@tailwindcss/vite": "^4.2.2",
     "emailjs-com": "^3.2.0",
     "framer-motion": "^12.38.0",
+    "groq-sdk": "^1.1.2",
     "lucide-react": "^1.8.0",
     "mongoose": "^9.6.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-hot-toast": "^2.6.0",
+    "react-markdown": "^10.1.0",
     "react-typed": "^2.0.12",
     "tailwindcss": "^4.2.2",
     "typed.js": "^3.0.0"

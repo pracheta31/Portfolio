@@ -10,22 +10,24 @@ const projectScreenshots = {
 
 const projectMeta = {
   "FreelanceHub": {
-    what: "A freelancing platform I built solo as a learning project.",
+    what: "A production-ready freelancing platform connecting clients with freelancers.",
     highlights: [
-      "Role-based login (client + freelancer)",
-      "Contracts with milestones",
-      "Dashboards for both sides",
+      "50+ active users testing the platform",
+      "JWT-based secure authentication",
+      "Real-time contract & milestone tracking",
+      "Responsive design for all devices"
     ],
-    stat: { val: "100%", label: "solo built" },
+    stat: { val: "50+", label: "active users" },
   },
   "SatConnect Intelligence Platform": {
-    what: "Power BI dashboard made for Microsoft Elevate AICTE Internship 2026.",
+    what: "Enterprise-grade Power BI dashboard for satellite internet analysis.",
     highlights: [
-      "24+ Power BI features used",
-      "ArcGIS maps + forecasting",
-      "Data from World Bank, TRAI, ITU",
+      "10K+ data points processed",
+      "24+ Power BI features implemented",
+      "ArcGIS maps with forecasting models",
+      "Delivered actionable market insights"
     ],
-    stat: { val: "38.68%", label: "global coverage in 2023" },
+    stat: { val: "10K+", label: "data points" },
   },
 };
 

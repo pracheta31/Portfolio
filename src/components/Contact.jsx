@@ -65,7 +65,7 @@ export default function Contact() {
       <motion.div initial={{ opacity:0, y:30 }} animate={inView ? { opacity:1, y:0 } : {}} transition={{ duration:0.6 }}
         className="flex items-center gap-4 mb-16">
         <span className="text-indigo-400 font-mono text-xl">05.</span>
-        <h2 className="text-3xl font-bold text-white">Get In Touch</h2>
+        <h2 className="text-3xl font-bold text-white">Let's Build Something Amazing ✨</h2>
         <div className="flex-1 h-px bg-gradient-to-r from-slate-600 to-transparent ml-4" />
       </motion.div>
 
@@ -74,14 +74,30 @@ export default function Contact() {
         <motion.div initial={{ opacity:0, x:-40 }} animate={inView ? { opacity:1, x:0 } : {}} transition={{ delay:0.2, duration:0.6 }}
           className="md:col-span-2 space-y-8">
           <div>
-            <h3 className="text-white text-xl font-semibold mb-3">Get in touch</h3>
+            <h3 className="text-white text-xl font-semibold mb-3">Ready to collaborate?</h3>
             <p className="text-slate-400 text-sm leading-relaxed mb-4">
-              I'm currently looking for internship opportunities. If you have something that might be a good fit, or just want to connect, feel free to reach out.
+              I'm looking for opportunities to work on real projects and grow as a developer. If you have a project idea or need help building something, let's connect and see how we can work together.
             </p>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <span className="text-xs bg-green-500/10 text-green-400 border border-green-500/20 px-3 py-1 rounded-full">Open to internships</span>
-              <span className="text-xs bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-3 py-1 rounded-full">Available for freelance</span>
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="text-xs bg-green-500/10 text-green-400 border border-green-500/20 px-3 py-1 rounded-full">💼 Available for hire</span>
+              <span className="text-xs bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-3 py-1 rounded-full">💡 Open to projects</span>
             </div>
+            
+            {/* Quick action buttons */}
+            <div className="grid grid-cols-1 gap-3 mb-4">
+              <motion.a
+                href={siteConfig.social.find(s => s.platform === "linkedin")?.url}
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center justify-center gap-2 bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-3 rounded-lg font-medium transition-colors"
+              >
+                <Link2 size={16} />
+                <span>Connect on LinkedIn</span>
+              </motion.a>
+            </div>
+            
             {/* response time indicator */}
             <div className="flex items-center gap-2 bg-slate-900/60 border border-slate-700 rounded-lg px-3 py-2">
               <motion.div

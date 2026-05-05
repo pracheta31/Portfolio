@@ -151,8 +151,11 @@ export default function Hero() {
         className="absolute bottom-0 left-0 w-72 h-72 bg-purple-600 rounded-full blur-[100px] pointer-events-none"
       />
 
-      {/* content — full width, no grid */}
-      <div className="relative z-10 max-w-3xl">
+      {/* content — split layout */}
+      <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+        
+        {/* Left side - Text content */}
+        <div>
 
         {/* status badge */}
         <motion.div
@@ -165,7 +168,7 @@ export default function Hero() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
           </span>
-          <span className="text-slate-400 text-xs font-mono">open to work · learning in public</span>
+          <span className="text-slate-400 text-xs font-mono">Available for opportunities</span>
         </motion.div>
 
         <motion.p
@@ -174,7 +177,7 @@ export default function Hero() {
           transition={{ delay: 0.2 }}
           className="text-indigo-400 font-mono text-sm mb-4 tracking-widest"
         >
-          Hi, my name is
+          Hi, I'm
         </motion.p>
 
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight flex flex-wrap">
@@ -200,7 +203,7 @@ export default function Hero() {
           transition={{ delay: 0.75 }}
           className="flex items-baseline flex-wrap gap-x-3 gap-y-1 mb-6 text-xl sm:text-2xl md:text-3xl font-semibold"
         >
-          <span className="text-slate-400 font-normal">I&apos;m a</span>
+          <span className="text-slate-400 font-normal">I'm a</span>
           <RoleBoard titles={hero.titles} />
         </motion.div>
 
@@ -262,6 +265,88 @@ export default function Hero() {
               </motion.a>
             ) : null;
           })}
+        </motion.div>
+        </div>
+
+        {/* Right side - Professional Card */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="hidden lg:block"
+        >
+          <div className="relative">
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.8 }}
+              className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 relative overflow-hidden max-w-sm"
+            >
+              
+              <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/10 rounded-full blur-2xl"></div>
+              <div className="absolute bottom-0 left-0 w-20 h-20 bg-purple-500/10 rounded-full blur-xl"></div>
+              
+              <div className="relative z-10">
+                <div className="flex items-center gap-2 mb-5">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                    <span className="text-xl">💼</span>
+                  </div>
+                  <div>
+                    <div className="text-white font-semibold text-sm">Open to Work</div>
+                    <div className="text-slate-400 text-xs">Available for opportunities</div>
+                  </div>
+                </div>
+
+                <div className="space-y-3 mb-5">
+                  <div className="flex items-start gap-2">
+                    <div className="w-7 h-7 rounded-lg bg-slate-800/80 flex items-center justify-center flex-shrink-0">
+                      <span className="text-base">🎯</span>
+                    </div>
+                    <div>
+                      <div className="text-white text-xs font-medium mb-0.5">Internships</div>
+                      <div className="text-slate-400 text-xs">Looking for hands-on experience</div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-2">
+                    <div className="w-7 h-7 rounded-lg bg-slate-800/80 flex items-center justify-center flex-shrink-0">
+                      <span className="text-base">💼</span>
+                    </div>
+                    <div>
+                      <div className="text-white text-xs font-medium mb-0.5">Freelance Projects</div>
+                      <div className="text-slate-400 text-xs">Ready to build your ideas</div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-2">
+                    <div className="w-7 h-7 rounded-lg bg-slate-800/80 flex items-center justify-center flex-shrink-0">
+                      <span className="text-base">🤝</span>
+                    </div>
+                    <div>
+                      <div className="text-white text-xs font-medium mb-0.5">Collaborations</div>
+                      <div className="text-slate-400 text-xs">Open to team projects</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-slate-700/50">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-slate-400">Response time</span>
+                    <div className="flex items-center gap-1.5">
+                      <motion.div
+                        animate={{ scale: [1, 1.3, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="w-1.5 h-1.5 bg-green-400 rounded-full"
+                      ></motion.div>
+                      <span className="text-green-400 font-medium">24 hours</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
         </motion.div>
       </div>
 
