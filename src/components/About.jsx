@@ -71,7 +71,7 @@ export default function About() {
         </motion.p>
 
         {/* stat cards */}
-        <div className="grid grid-cols-3 gap-3 sm:gap-5 max-w-xs sm:max-w-md mb-10">
+        <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-5 max-w-xs sm:max-w-md mb-10">
           {about.highlights.map(({ label, value }, i) => (
             <motion.div
               key={label}

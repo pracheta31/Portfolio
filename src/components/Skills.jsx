@@ -36,9 +36,21 @@ function SkillCard({ name, icon, delay }) {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay, duration: 0.35, ease: "easeOut" }}
       whileHover={{ y: -2, transition: { duration: 0.12 } }}
-      className="flex items-center gap-2.5 bg-slate-800/50 border border-slate-700/60 hover:border-slate-600 rounded-lg px-3 py-2.5 transition-all cursor-default"
+      className="flex items-center gap-2.5 bg-slate-800/50 border border-slate-700/60 hover:border-slate-600 rounded-lg px-3 py-2.5 transition-all cursor-default w-full"
     >
-      <span className="text-lg shrink-0">{icon}</span>
+      <img 
+        src={icon} 
+        alt={`${name} logo`}
+        className="w-6 h-6 shrink-0 object-contain"
+        style={{ filter: name === "Express" ? "invert(1)" : "none" }}
+        onError={(e) => {
+          e.target.style.display = 'none';
+          e.target.nextElementSibling?.classList.remove('hidden');
+        }}
+      />
+      <div className="w-6 h-6 shrink-0 bg-indigo-500/20 rounded flex items-center justify-center text-indigo-400 text-xs font-bold hidden">
+        {name.charAt(0)}
+      </div>
 
       <div className="flex-1 min-w-0">
         <p className="text-white text-xs font-medium mb-0.5">{name}</p>
@@ -99,8 +111,8 @@ export default function Skills() {
         ))}
       </motion.div>
 
-      <div className="grid sm:grid-cols-2 gap-x-8 md:gap-x-12 gap-y-6">
-        <div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-x-4 sm:gap-x-8 md:gap-x-12 gap-y-6">
+        <div className="w-full">
           {["Core Skills"].map((group) => {
             const groupSkills = skills.filter(s => s.group === group);
             if (!groupSkills.length) return null;
@@ -131,7 +143,7 @@ export default function Skills() {
           })}
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-6 w-full">
           {["Working Knowledge", "Familiar With"].map((group, gi) => {
             const groupSkills = skills.filter(s => s.group === group);
             if (!groupSkills.length) return null;

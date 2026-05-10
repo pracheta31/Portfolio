@@ -4,7 +4,7 @@ A modern, responsive portfolio website built with React, featuring an AI-powered
 
 ## 🌐 Live Demo
 
-**[View Live Portfolio](https://your-portfolio-url.vercel.app)** *(Update after deployment)*
+**[View Live Portfolio](https://portfolio-lime-pi-72.vercel.app)**
 
 ## ✨ Features
 

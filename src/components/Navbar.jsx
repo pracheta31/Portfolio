@@ -79,7 +79,7 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 px-8 py-4 flex justify-between items-center transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-4 flex justify-between items-center transition-all duration-300 ${
         scrolled
           ? "bg-slate-900/60 backdrop-blur-xl border-b border-slate-700 shadow-[0_8px_30px_rgba(0,0,0,0.3)]"
           : "bg-transparent"
@@ -169,7 +169,7 @@ export default function Navbar() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.3 }}
-            className="absolute top-16 right-4 w-64 bg-slate-900/70 backdrop-blur-xl border border-slate-700 rounded-xl p-6 flex flex-col gap-5 md:hidden shadow-2xl"
+            className="absolute top-16 right-4 left-4 sm:left-auto sm:w-64 bg-slate-900/95 backdrop-blur-xl border border-slate-700 rounded-xl p-6 flex flex-col gap-5 md:hidden shadow-2xl"
           >
             {links.map((link, i) => (
               <motion.li
@@ -194,6 +194,23 @@ export default function Navbar() {
                 </a>
               </motion.li>
             ))}
+            
+            {/* Resume button in mobile menu */}
+            <motion.li
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.08 * links.length }}
+              className="pt-3 border-t border-slate-700"
+            >
+              <a
+                href={siteConfig.owner.resumeUrl}
+                download="Pracheta_Resume.pdf"
+                className="block text-center border border-indigo-400 text-indigo-400 px-4 py-2 rounded-lg font-mono text-sm hover:bg-indigo-400/10 transition-all"
+                onClick={() => setMenuOpen(false)}
+              >
+                Resume
+              </a>
+            </motion.li>
           </motion.ul>
         )}
       </AnimatePresence>
