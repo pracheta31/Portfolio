@@ -14,7 +14,7 @@ export const siteConfig = {
   about: {
     highlights: [
       { label: "Projects", value: "2" },
-      { label: "Internships", value: "3" },
+      { label: "Internships", value: "4" },
       { label: "Certifications", value: "2" },
     ],
   },
@@ -30,6 +30,7 @@ export const siteConfig = {
     { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", group: "Working Knowledge" },
     { name: "Power BI", icon: "https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg", group: "Working Knowledge" },
     { name: "C/C++", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg", group: "Familiar With" },
+    { name: "Kali Linux", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg", group: "Familiar With" },
     { name: "Tableau", icon: "https://cdn.worldvectorlogo.com/logos/tableau-software.svg", group: "Familiar With" },
     { name: "ML Basics", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg", group: "Familiar With" },
   ],

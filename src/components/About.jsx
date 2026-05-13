@@ -32,6 +32,7 @@ function CountUp({ target, duration = 1.4 }) {
 const internships = [
   { label: "ML Internship", place: "Infolabz IT Services", dur: "6 weeks" },
   { label: "Django Internship", place: "Infolabz IT Services", dur: "15 days" },
+  { label: "Cyber Security Intern", place: "Jinarth Infotech", dur: "May 2026" },
   { label: "Microsoft Elevate AICTE", place: "Power BI project", dur: "2026" },
 ];
 
@@ -71,7 +72,7 @@ export default function About() {
         </motion.p>
 
         {/* stat cards */}
-        <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-5 max-w-xs sm:max-w-md mb-10">
+        <div className="grid grid-cols-3 gap-3 sm:gap-5 max-w-xs sm:max-w-md mb-10">
           {about.highlights.map(({ label, value }, i) => (
             <motion.div
               key={label}

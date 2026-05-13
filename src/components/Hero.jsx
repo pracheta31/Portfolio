@@ -273,7 +273,7 @@ export default function Hero() {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="hidden lg:block"
+          className="w-full lg:w-auto"
         >
           <div className="relative">
             
@@ -281,66 +281,46 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.8 }}
-              className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 relative overflow-hidden max-w-sm"
+              className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4 relative overflow-hidden max-w-xs mx-auto lg:mx-0"
             >
               
-              <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/10 rounded-full blur-2xl"></div>
-              <div className="absolute bottom-0 left-0 w-20 h-20 bg-purple-500/10 rounded-full blur-xl"></div>
+              <div className="absolute top-0 right-0 w-20 h-20 bg-indigo-500/10 rounded-full blur-2xl"></div>
               
               <div className="relative z-10">
-                <div className="flex items-center gap-2 mb-5">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                    <span className="text-xl">💼</span>
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                    <span className="text-base">💼</span>
                   </div>
                   <div>
-                    <div className="text-white font-semibold text-sm">Open to Work</div>
-                    <div className="text-slate-400 text-xs">Available for opportunities</div>
+                    <div className="text-white font-semibold text-xs">Open to Work</div>
+                    <div className="text-slate-400 text-[10px]">Available now</div>
                   </div>
                 </div>
 
-                <div className="space-y-3 mb-5">
-                  <div className="flex items-start gap-2">
-                    <div className="w-7 h-7 rounded-lg bg-slate-800/80 flex items-center justify-center flex-shrink-0">
-                      <span className="text-base">🎯</span>
-                    </div>
-                    <div>
-                      <div className="text-white text-xs font-medium mb-0.5">Internships</div>
-                      <div className="text-slate-400 text-xs">Looking for hands-on experience</div>
-                    </div>
+                <div className="space-y-2 mb-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm">🎯</span>
+                    <span className="text-white text-[11px]">Internships</span>
                   </div>
-
-                  <div className="flex items-start gap-2">
-                    <div className="w-7 h-7 rounded-lg bg-slate-800/80 flex items-center justify-center flex-shrink-0">
-                      <span className="text-base">💼</span>
-                    </div>
-                    <div>
-                      <div className="text-white text-xs font-medium mb-0.5">Freelance Projects</div>
-                      <div className="text-slate-400 text-xs">Ready to build your ideas</div>
-                    </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm">💼</span>
+                    <span className="text-white text-[11px]">Freelance</span>
                   </div>
-
-                  <div className="flex items-start gap-2">
-                    <div className="w-7 h-7 rounded-lg bg-slate-800/80 flex items-center justify-center flex-shrink-0">
-                      <span className="text-base">🤝</span>
-                    </div>
-                    <div>
-                      <div className="text-white text-xs font-medium mb-0.5">Collaborations</div>
-                      <div className="text-slate-400 text-xs">Open to team projects</div>
-                    </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm">🤝</span>
+                    <span className="text-white text-[11px]">Collaborations</span>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-slate-700/50">
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="text-slate-400">Response time</span>
-                    <div className="flex items-center gap-1.5">
-                      <motion.div
-                        animate={{ scale: [1, 1.3, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="w-1.5 h-1.5 bg-green-400 rounded-full"
-                      ></motion.div>
-                      <span className="text-green-400 font-medium">24 hours</span>
-                    </div>
+                <div className="pt-2 border-t border-slate-700/50 flex items-center justify-between text-[10px]">
+                  <span className="text-slate-400">Response</span>
+                  <div className="flex items-center gap-1">
+                    <motion.div
+                      animate={{ scale: [1, 1.3, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="w-1 h-1 bg-green-400 rounded-full"
+                    ></motion.div>
+                    <span className="text-green-400">24h</span>
                   </div>
                 </div>
               </div>
